@@ -20,13 +20,13 @@ body {
 /* Background hearts */
 .bg-heart {
   position: absolute;
-  width: 30px; height: 30px;
-  fill: rgba(173,216,230,0.5); /* light blue */
-  animation: floatBG 20s linear infinite;
+  width: 40px; height: 40px;
+  fill: rgba(173,216,230,0.4); /* light blue */
+  animation: floatBG 25s linear infinite;
 }
 @keyframes floatBG {
   0% { transform: translateY(0) translateX(0); }
-  100% { transform: translateY(-600px) translateX(200px); }
+  100% { transform: translateY(-700px) translateX(250px); }
 }
 
 svg {
@@ -68,28 +68,33 @@ h1 {
 
 /* Frames */
 .frame {
-  width: 120px; height: 120px;
+  width: 300px; height: 250px;
   position: absolute;
   border-radius: 12px;
   background: linear-gradient(145deg, #deb887, #cfa16f); /* wood gradient */
-  box-shadow: 5px 5px 15px rgba(0,0,0,0.4);
+  box-shadow: 7px 7px 20px rgba(0,0,0,0.4);
   animation: float 6s ease-in-out infinite alternate;
   transform-origin: center;
 }
 
-/* Left frames rotation */
-.frame-left1 { transform: rotate(-6deg); top:5%; left:5%; }
-.frame-left2 { transform: rotate(4deg); top:45%; left:2%; }
-.frame-left3 { transform: rotate(-5deg); bottom:15%; left:5%; }
+/* Left frames rotation and positions */
+.frame-left1 { transform: rotate(-15deg); top:10%; left:3%; }
+.frame-left2 { transform: rotate(12deg); top:45%; left:2%; }
+.frame-left3 { transform: rotate(-12deg); bottom:10%; left:5%; }
 
-/* Right frames rotation */
-.frame-right1 { transform: rotate(5deg); top:15%; right:5%; }
-.frame-right2 { transform: rotate(-4deg); top:45%; right:2%; }
-.frame-right3 { transform: rotate(6deg); bottom:15%; right:5%; }
+/* Right frames rotation and positions */
+.frame-right1 { transform: rotate(15deg); top:10%; right:3%; }
+.frame-right2 { transform: rotate(-12deg); top:45%; right:2%; }
+.frame-right3 { transform: rotate(12deg); bottom:10%; right:5%; }
 
 @keyframes float {
   from { transform: translateY(0); }
   to { transform: translateY(-15px); }
+}
+
+@media (max-width: 800px) {
+  h1 { font-size: 2em; }
+  .frame { width: 200px; height: 170px; }
 }
 </style>
 </head>
