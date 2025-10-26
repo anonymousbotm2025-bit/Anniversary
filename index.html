@@ -16,36 +16,31 @@ body {
   font-family: "Poppins", sans-serif;
 }
 
-/* --- Heart --- */
 svg {
-  width: 60%;
+  width: 70%;
   max-width: 300px;
 }
-.heart {
-  stroke: #1e90ff;
+
+.heart-path {
   fill: none;
-  stroke-width: 4;
-  stroke-dasharray: 2000;
-  stroke-dashoffset: 2000;
-  animation: draw 5s ease forwards, glow 2s 5s infinite alternate;
+  stroke: #1e90ff;
+  stroke-width: 5;
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: draw 6s ease forwards;
 }
-@keyframes draw {
-  to { stroke-dashoffset: 0; }
-}
-@keyframes glow {
-  from { filter: drop-shadow(0 0 2px #1e90ff); }
-  to { filter: drop-shadow(0 0 10px #4aaaff); }
-}
+
+@keyframes draw { to { stroke-dashoffset: 0; } }
 .fade-out { animation: fadeOut 2s forwards; }
 @keyframes fadeOut { to { opacity: 0; } }
 
-/* --- Message --- */
 #message {
   position: absolute;
   opacity: 0;
   text-align: center;
   animation: show 1s 6s forwards;
 }
+
 @keyframes show { to { opacity: 1; } }
 
 h1 {
@@ -59,19 +54,26 @@ h1 {
 .frame {
   width: 80px; height: 80px;
   position: absolute;
-  border: 3px solid white;
   border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.3);
-  background-size: cover;
-  background-position: center;
+  background: linear-gradient(145deg, #deb887, #cfa16f); /* wood gradient */
+  box-shadow: 3px 3px 8px rgba(0,0,0,0.4);
   animation: float 5s ease-in-out infinite alternate;
+  transform-origin: center;
 }
+
+/* Random rotation angles for depth */
+.frame-left1 { transform: rotate(-5deg); }
+.frame-left2 { transform: rotate(4deg); }
+.frame-left3 { transform: rotate(-3deg); }
+.frame-right1 { transform: rotate(3deg); }
+.frame-right2 { transform: rotate(-4deg); }
+.frame-right3 { transform: rotate(5deg); }
+
 @keyframes float {
   from { transform: translateY(0); }
   to { transform: translateY(-10px); }
 }
 
-/* --- Floating Blue Hearts --- */
 .heart-small {
   position: absolute;
   width: 25px; height: 25px;
@@ -82,4 +84,49 @@ h1 {
 @keyframes pop {
   0% { transform: scale(0); opacity: 0; }
   50% { transform: scale(1.3); opacity: 1; }
-  100% { transform: scale(
+  100% { transform: scale(1); opacity: 0; }
+}
+
+@media (max-width: 600px) {
+  h1 { font-size: 1.5em; }
+  .frame { width: 60px; height: 60px; }
+}
+</style>
+</head>
+<body>
+
+<!-- Heart -->
+<svg viewBox="0 0 200 200">
+  <path class="heart-path" d="
+    M100,180 
+    C20,120 20,40 100,60 
+    C180,40 180,120 100,180 Z"/>
+</svg>
+
+<div id="message">
+  <h1>Happy Anniversary</h1>
+
+  <!-- Left side frames -->
+  <div class="frame frame-left1" style="top:20%;left:5%;"></div>
+  <div class="frame frame-left2" style="top:45%;left:2%;"></div>
+  <div class="frame frame-left3" style="bottom:20%;left:7%;"></div>
+
+  <!-- Right side frames -->
+  <div class="frame frame-right1" style="top:20%;right:5%;"></div>
+  <div class="frame frame-right2" style="top:45%;right:2%;"></div>
+  <div class="frame frame-right3" style="bottom:20%;right:7%;"></div>
+
+  <!-- Blue hearts -->
+  <svg class="heart-small" style="top:10%;left:50%;animation-delay:6.2s;" viewBox="0 0 24 24"><path d="M12 21S5 14.5 3 9.5C1 4.5 5 2 8 4.5C11 2 15 4.5 13 9.5C11 14.5 12 21 12 21Z"/></svg>
+  <svg class="heart-small" style="top:30%;left:40%;animation-delay:6.5s;" viewBox="0 0 24 24"><path d="M12 21S5 14.5 3 9.5C1 4.5 5 2 8 4.5C11 2 15 4.5 13 9.5C11 14.5 12 21 12 21Z"/></svg>
+  <svg class="heart-small" style="top:50%;left:60%;animation-delay:6.8s;" viewBox="0 0 24 24"><path d="M12 21S5 14.5 3 9.5C1 4.5 5 2 8 4.5C11 2 15 4.5 13 9.5C11 14.5 12 21 12 21Z"/></svg>
+</div>
+
+<script>
+setTimeout(() => {
+  document.querySelector('svg').classList.add('fade-out');
+}, 6000);
+</script>
+</body>
+</html>
+
