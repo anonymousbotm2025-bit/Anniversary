@@ -21,7 +21,7 @@ body {
 .bg-heart {
   position: absolute;
   width: 40px; height: 40px;
-  fill: rgba(173,216,230,0.4); /* light blue */
+  fill: rgba(173,216,230,0.4);
   animation: floatBG 25s linear infinite;
 }
 @keyframes floatBG {
@@ -68,69 +68,42 @@ h1 {
 
 /* Frames */
 .frame {
-  width: 300px; height: 250px;
+  width: 300px;
+  height: 250px;
   position: absolute;
   border-radius: 12px;
-  background: linear-gradient(145deg, #deb887, #cfa16f); /* wood gradient */
+  background: linear-gradient(145deg, #deb887, #cfa16f);
   box-shadow: 7px 7px 20px rgba(0,0,0,0.4);
   animation: float 6s ease-in-out infinite alternate;
   transform-origin: center;
 }
 
-/* Left frames rotation and positions */
-.frame-left1 { transform: rotate(-15deg); top:10%; left:3%; }
-.frame-left2 { transform: rotate(12deg); top:45%; left:2%; }
-.frame-left3 { transform: rotate(-12deg); bottom:10%; left:5%; }
+/* Left frames */
+.frame-left1 { transform: rotate(-15deg); top:10%; left:-20%; }
+.frame-left2 { transform: rotate(12deg); top:40%; left:-25%; }
+.frame-left3 { transform: rotate(-12deg); bottom:10%; left:-20%; }
 
-/* Right frames rotation and positions */
-.frame-right1 { transform: rotate(15deg); top:10%; right:3%; }
-.frame-right2 { transform: rotate(-12deg); top:45%; right:2%; }
-.frame-right3 { transform: rotate(12deg); bottom:10%; right:5%; }
+/* Right frames */
+.frame-right1 { transform: rotate(15deg); top:10%; right:-20%; }
+.frame-right2 { transform: rotate(-12deg); top:40%; right:-25%; }
+.frame-right3 { transform: rotate(12deg); bottom:10%; right:-20%; }
 
 @keyframes float {
   from { transform: translateY(0); }
   to { transform: translateY(-15px); }
 }
 
-@media (max-width: 800px) {
-  h1 { font-size: 2em; }
+@media (max-width: 1200px) {
   .frame { width: 200px; height: 170px; }
+  .frame-left1, .frame-left2, .frame-left3,
+  .frame-right1, .frame-right2, .frame-right3 {
+    left: -10%;
+    right: -10%;
+  }
 }
 </style>
 </head>
 <body>
 
 <!-- Background floating hearts -->
-<svg class="bg-heart" style="top:80%;left:20%;" viewBox="0 0 24 24"><path d="M12 21S5 14.5 3 9.5C1 4.5 5 2 8 4.5C11 2 15 4.5 13 9.5C11 14.5 12 21 12 21Z"/></svg>
-<svg class="bg-heart" style="top:90%;left:60%;" viewBox="0 0 24 24"><path d="M12 21S5 14.5 3 9.5C1 4.5 5 2 8 4.5C11 2 15 4.5 13 9.5C11 14.5 12 21 12 21Z"/></svg>
-<svg class="bg-heart" style="top:85%;left:40%;" viewBox="0 0 24 24"><path d="M12 21S5 14.5 3 9.5C1 4.5 5 2 8 4.5C11 2 15 4.5 13 9.5C11 14.5 12 21 12 21Z"/></svg>
-
-<!-- Heart animation -->
-<svg viewBox="0 0 200 200" style="z-index:2;">
-  <path class="heart-path" d="
-    M100,180 
-    C20,120 20,40 100,60 
-    C180,40 180,120 100,180 Z"/>
-</svg>
-
-<div id="message">
-  <h1>Happy Anniversary</h1>
-
-  <!-- Left frames -->
-  <div class="frame frame-left1"></div>
-  <div class="frame frame-left2"></div>
-  <div class="frame frame-left3"></div>
-
-  <!-- Right frames -->
-  <div class="frame frame-right1"></div>
-  <div class="frame frame-right2"></div>
-  <div class="frame frame-right3"></div>
-</div>
-
-<script>
-setTimeout(() => {
-  document.querySelector('svg').classList.add('fade-out');
-}, 6000);
-</script>
-</body>
-</html>
+<svg class="bg-heart" style="top:80%;left:20%;" viewBox="0 0 24 24"><path d="M
